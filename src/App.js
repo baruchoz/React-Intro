@@ -5,6 +5,7 @@ import Home from './views/Home';
 import { Route } from 'react-router-dom';
 import Racers from './views/Racers';
 import Kekambas from './views/Kekambas';
+import Users from './views/Users';
 
 
 
@@ -12,7 +13,8 @@ export default class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-        count: 0
+        count: 0,
+        name: 'Baruch'
     }
 }
 
@@ -23,6 +25,13 @@ handleClick = (step) => {
     })
 }
 
+changeName = (name) => {
+    // let name = prompt('What is your name?')
+    this.setState({
+      name
+    })
+}
+
   render() {
     return (
       <>
@@ -30,7 +39,7 @@ handleClick = (step) => {
         <div className="container">
 
           <Route exact path='/'>
-            <Home count={this.state.count} handleClick={this.handleClick} name={this.props.name} />
+            <Home count={this.state.count} handleClick={this.handleClick} name={this.state.name} changeName={this.changeName}/>
           </Route>
 
           <Route exact path='/about'>
@@ -43,6 +52,10 @@ handleClick = (step) => {
 
           <Route exact path='/kekambas'>
             <Kekambas />
+          </Route>
+
+          <Route exact path='/users'>
+            <Users />
           </Route>
           
         </div>
