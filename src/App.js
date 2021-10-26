@@ -4,6 +4,8 @@ import About from './views/About';
 import Home from './views/Home';
 import { Route } from 'react-router-dom';
 import Racers from './views/Racers';
+import Kekambas from './views/Kekambas';
+
 
 
 export default class App extends Component {
@@ -37,6 +39,10 @@ handleClick = (step) => {
 
           <Route exact path='/racers'>
             <Racers />
+          </Route>
+
+          <Route exact path='/kekambas'>
+            <Kekambas />
           </Route>
           
         </div>

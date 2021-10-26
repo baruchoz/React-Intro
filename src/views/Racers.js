@@ -18,6 +18,7 @@ export default class Racers extends Component {
             racers: data.MRData.StandingsTable.StandingsLists[0].DriverStandings
         }))    
     }
+    
     render() {
         console.log('racers component rendered')
         console.log(this.state)
