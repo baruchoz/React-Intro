@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 import Racers from './views/Racers';
 import Kekambas from './views/Kekambas';
 import Users from './views/Users';
+import { Posts } from './views/Posts';
 
 
 
@@ -56,6 +57,10 @@ changeName = (name) => {
 
           <Route exact path='/users'>
             <Users />
+          </Route>
+
+          <Route exact path='/posts'>
+            <Posts />
           </Route>
           
         </div>
