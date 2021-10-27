@@ -47,8 +47,7 @@ export default function Racers(props) {
                         {racers.map((r, i) => <RacerDetail key={i} racer={r}/>)}
                     </tbody>
                 </table>
-            ): null}
-            
+            ): null}            
         </div>
     )
     

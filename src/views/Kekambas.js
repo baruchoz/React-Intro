@@ -1,34 +1,39 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import KekambasDetail from '../components/KekambasDetail';
 
-export default class Kekambas extends Component {
-    constructor(props){
-        super(props);
-        // console.log('kekambas component constructed')
-        this.state = {
-            kekambas: []
-        }
-    }
-    
-    componentDidMount(){
-        // console.log('kekambas component did mount')
-        fetch('https://kekambas-bs.herokuapp.com/kekambas')
+export default function Kekambas(props) {
+    const [kekambas, setKekambas] = useState([])
+        
+    useEffect(() => {
+        fetch(`https://kekambas-bs.herokuapp.com/posts`)
         .then(res => res.json())
-        .then(data => this.setState({
-            kekambas: data
-        }))    
-    }
+        .then(data => setKekambas(data))
+    })
+      
+    return (
+        <div>
+            This is the Kekambas page
+
+            {kekambas.length ? (
+                <table className="table table-secondary table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <td>Body</td>
+                            <td>Date Created</td>
+                            <td>ID</td>
+                            <td>Title</td>
+                            <td>First Name</td>
+                            <td>User ID</td>
+                            <td>Last Name</td>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {kekambas.map((r, i) => <KekambasDetail key={i} kekam={r}/>)}
+                    </tbody>
+                </table>
+            ): null}
+        </div>
+    )
     
-    
-    
-    render() {
-        // console.log('kekambas component rendered')
-        console.log(this.state)
-        return (
-            <div>
-                This is the kekambas page
-                {this.state.kekambas.map((f, l) => <KekambasDetail key={l} kekam={f}/>)}
-            </div>
-        )
-    }
 }
